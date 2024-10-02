@@ -6,6 +6,7 @@
       variant="outlined"
       v-model="userStore.snackbar"
       location="bottom"
+      elevation="24"
     >
       <template v-slot:activator="{ props }">
         <v-btn class="ma-2" color="success" variant="outlined" v-bind="props"
