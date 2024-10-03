@@ -24,7 +24,7 @@
                 @click:append="showPassword = !showPassword"
               ></v-text-field>
 
-              <v-btn :disabled="!valid" @click="loginUser" color="primary"
+              <v-btn block :disabled="!valid" @click="loginUser" color="primary"
                 >Login</v-btn
               >
             </v-form>
