@@ -3,7 +3,7 @@
     <v-row align="center" justify="center">
       <v-col cols="12" sm="12" md="4">
         <v-card variant="outlined">
-          <v-card-title class="headline">Login</v-card-title>
+          <v-card-title class="headline text-center">Login</v-card-title>
           <v-card-text>
             <v-form ref="form" v-model="valid" lazy-validation>
               <v-text-field
