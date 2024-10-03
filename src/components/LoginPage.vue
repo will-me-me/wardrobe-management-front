@@ -14,11 +14,14 @@
               ></v-text-field>
 
               <v-text-field
+                hint="At least 8 characters"
                 v-model="password"
                 :rules="[rules.required]"
                 label="Password"
-                type="password"
                 required
+                :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                :type="showPassword ? 'text' : 'password'"
+                @click:append="showPassword = !showPassword"
               ></v-text-field>
 
               <v-btn :disabled="!valid" @click="loginUser" color="primary"
@@ -42,6 +45,8 @@ const email = ref("");
 const password = ref("");
 const valid = ref(false);
 const router = useRouter();
+
+const showPassword = ref(false);
 
 const rules = {
   required: (value) => !!value || "Required.",
