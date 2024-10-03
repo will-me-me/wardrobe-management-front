@@ -1,5 +1,11 @@
 <template>
-  <v-dialog v-model="dialog" max-width="500px">
+  <v-dialog
+    transition="dialog-bottom-transition"
+    v-model="dialog"
+    max-width="500px"
+    opacity="0.55"
+    z-index="3000"
+  >
     <v-card>
       <v-card-title class="text-center">
         <span class="headline">Create User</span>
@@ -27,7 +33,10 @@
             :rules="[rules.required, rules.minLength(8)]"
             label="Password"
             required
-            type="password"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showPassword ? 'text' : 'password'"
+            @click:append="showPassword = !showPassword"
+            hint="At least 8 characters"
           />
         </v-form>
       </v-card-text>
@@ -72,6 +81,8 @@ export default {
       password: "",
     });
 
+    const showPassword = ref(false);
+
     // Validation rules
     const rules = {
       required: (v) => !!v || "This field is required",
@@ -115,6 +126,7 @@ export default {
       createNewUser,
       closeDialog,
       rules,
+      showPassword,
     };
   },
 };
