@@ -42,11 +42,13 @@
               v-for="(rule, index) in passwordValidationRules"
               :key="index"
             >
-              <v-icon :color="rule.valid ? 'green' : 'red'">{{
+              <v-icon size="20" :color="rule.valid ? 'success' : 'error'">{{
                 rule.valid ? "mdi-check-circle" : "mdi-close-circle"
               }}</v-icon>
               <v-list-item-content>
-                <v-list-item-title>{{ rule.message }}</v-list-item-title>
+                <v-list-item-title class="text-caption">{{
+                  rule.message
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
