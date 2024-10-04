@@ -54,6 +54,7 @@
       :createUserDialog="showCreateUserDialog"
       @update:dialog="createUserDialog = $event"
     />
+    <div v-if="createUserDialog || dialog" class="blur-background"></div>
   </v-app>
 </template>
 
@@ -94,4 +95,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+</style>

@@ -3,8 +3,6 @@
     transition="dialog-bottom-transition"
     v-model="dialog"
     max-width="500px"
-    opacity="0.55"
-    z-index="3000"
   >
     <v-card>
       <v-card-title class="text-center">
