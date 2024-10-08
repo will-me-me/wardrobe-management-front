@@ -21,8 +21,15 @@
         sm="6"
         md="4"
       >
+        <!-- Loader for the cards -->
+        <v-skeleton-loader
+          v-if="clothesStore.loading"
+          type="card"
+          class="mb-4"
+          elavation="12"
+        ></v-skeleton-loader>
         <v-card
-          v-if="clothes?.name"
+          v-else-if="clothes?.name"
           class="mb-4"
           outlined
           color="primary"

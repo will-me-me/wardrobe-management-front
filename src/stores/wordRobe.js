@@ -20,16 +20,20 @@ export const ClothesStore = defineStore("clothes", {
     snackbar: false,
     color: "",
     snackbartext: "",
+    loading: true,
   }),
 
   // Actions: functions to modify state
   actions: {
     async getAllClothes() {
+      this.loading = true;
       try {
         const response = await GetAllClothes();
         this.Allclothes = response.data;
       } catch (error) {
         console.error("Failed to fetch clothes:", error);
+      } finally {
+        this.loading = false;
       }
     },
 
@@ -111,12 +115,14 @@ export const ClothesStore = defineStore("clothes", {
       }
     },
     async Login(user) {
+      this.loading = true;
       try {
         const newUser = await UserLogin(user);
         const token = newUser.access_token;
         if (token) {
           localStorage.setItem("token", token);
           this.isLoggeInd = true;
+          this.loading = true;
           await this.getAllClothes();
           console.log("Login successful. Token stored:", token);
           this.snackbartext = "Login successful. Token stored:";
